@@ -1,0 +1,31 @@
+site_name: ateco
+site_description: Italian ATECO classification (ISTAT) as a pure-Python data library
+site_url: https://dlrsp.github.io/ateco/
+repo_url: https://github.com/DLRSP/ateco
+repo_name: DLRSP/ateco
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+nav:
+  - Home: index.md
+  - Community:
+      - Contributing: community/contributing.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.superfences
+  - pymdownx.details
+  - toc:
+      permalink: true

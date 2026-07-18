@@ -1,0 +1,30 @@
+---
+name: CI/CD
+
+on:
+  push:
+    tags:
+      - 'v*'
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  ci:
+    uses: DLRSP/workflows/.github/workflows/ci.yaml@main
+    permissions:
+      contents: write
+      actions: read
+      checks: write
+      security-events: write
+      pull-requests: write
+    with:
+      tox-matrix-mode: python-only
+      requirements-ref: main
+      install-test-deps: false
+      assert-wheel-locks: false
+      build-binary-wheels: false
+    secrets: inherit

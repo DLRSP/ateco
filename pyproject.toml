@@ -1,0 +1,156 @@
+[build-system]
+requires = [
+  "setuptools >= 77",
+  "wheel",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ateco"
+description = "Italian ATECO classification (ISTAT) as a pure-Python data library."
+authors = [
+    { name = "DLRSP", email = "dlrsp.dev@gmail.com" },
+]
+requires-python = ">=3.10"
+dynamic = ["version"]
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+keywords = ["ateco", "istat", "italy", "classification", "nace"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Software Development :: Libraries",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/DLRSP/ateco"
+Documentation = "https://github.com/DLRSP/ateco/"
+Repository = "https://github.com/DLRSP/ateco"
+Issues = "https://github.com/DLRSP/ateco/issues"
+Changelog = "https://github.com/DLRSP/ateco/blob/main/CHANGELOG.rst"
+
+[project.optional-dependencies]
+testing = [
+    "coverage",
+    "pytest",
+]
+docs = [
+    "mkdocs>=1.5",
+    "mkdocs-material>=9.0",
+    "pymdown-extensions>=10.0",
+    "mkdocs-git-revision-date-plugin>=2.0",
+]
+linting = [
+    "flake8",
+    "flake8-pyproject",
+    "flake8-bugbear",
+    "flake8-comprehensions",
+    "flake8-tidy-imports",
+    "flake8-typing-imports",
+    "pylint",
+]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+include-package-data = true
+zip-safe = false
+
+[tool.setuptools.package-data]
+ateco = ["data/**/*"]
+
+[tool.setuptools.dynamic]
+version = { attr = "ateco.__version__" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 80
+target-version = ['py311']
+
+[tool.isort]
+profile = "black"
+
+[tool.check-manifest]
+ignore = [
+    "AGENTS.md",
+]
+
+[tool.flake8]
+max-line-length = 80
+select = ["E", "F", "W", "B", "B950", "C", "I", "TYP"]
+ignore = ["E203", "E501", "W503", "B950"]
+per-file-ignores = []
+
+[tool.mypy]
+check_untyped_defs = true
+disallow_any_generics = true
+disallow_incomplete_defs = true
+disallow_untyped_defs = true
+mypy_path = "src/"
+no_implicit_optional = true
+show_error_codes = true
+warn_unreachable = true
+warn_unused_ignores = true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+allow_untyped_defs = true
+
+[tool.pytest.ini_options]
+addopts = """\
+    --strict-config
+    --strict-markers
+    """
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.coverage.paths]
+source = ["src", ".tox/*/site-packages"]
+
+[tool.coverage.run]
+branch = true
+source = ["ateco"]
+
+[tool.coverage.report]
+show_missing = true
+
+[tool.towncrier]
+package = "ateco"
+package_dir = "src"
+filename = "CHANGELOG.rst"
+directory = "news/"
+version = "0.1.0"
+issue_format = "`#{issue} <https://github.com/DLRSP/ateco/issues/{issue}>`_"
+type = [
+  { name = "Process",                   directory = "process", showcontent = true },
+  { name = "Deprecations and Removals", directory = "removal", showcontent = true },
+  { name = "Features",                  directory = "feature", showcontent = true },
+  { name = "Bug Fixes",                 directory = "bugfix",  showcontent = true },
+  { name = "Improved Documentation",    directory = "doc",     showcontent = true },
+  { name = "Trivial Changes",           directory = "trivial", showcontent = false },
+]
+
+[tool.bumpversion]
+current_version = "0.1.0"
+commit = true
+tag = true
+allow_dirty = true
+
+[[tool.bumpversion.files]]
+filename = "./src/ateco/__init__.py"
+[[tool.bumpversion.files]]
+filename = "pyproject.toml"
+search = 'version = "{current_version}"'
+replace = 'version = "{new_version}"'

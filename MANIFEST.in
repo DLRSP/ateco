@@ -1,0 +1,13 @@
+include *.py
+include *.rst
+include *.md
+include *.yaml
+include *.yml
+include tox.ini
+include LICENSE
+include CODEOWNERS
+
+recursive-include src *.py *.json *.csv *.xml *.txt
+recursive-include tests *.py
+recursive-include news *.rst
+recursive-exclude docs *

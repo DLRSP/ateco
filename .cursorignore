@@ -1,0 +1,8 @@
+venv/
+.idea/
+dist/
+*.egg-info/
+.tox/
+.pytest_cache/
+site/
+

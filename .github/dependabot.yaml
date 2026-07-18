@@ -1,0 +1,25 @@
+# https://docs.github.com/en/github/administering-a-repository/configuration-options-for-dependency-updates
+---
+version: 2
+updates:
+
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 0
+    labels:
+      - "dependencies"
+    assignees:
+      - "dlrsp-dev"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    labels:
+      - "dependencies"
+    assignees:
+      - "dlrsp-dev"
+    ignore:
+      - dependency-name: "DLRSP/workflows*"
