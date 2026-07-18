@@ -19,7 +19,7 @@ from ateco._api import (
 )
 from ateco._codes import canonicalize, compact_to_dotted, normalize
 
-__version__ = "0.1.0"
+__version__ = "1.0.0"
 __version_info__ = tuple(
     int(i) if i.isdigit() else i for i in __version__.split(".")
 )
