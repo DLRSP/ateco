@@ -3,6 +3,8 @@
 Italian **ATECO** economic activity classification (ISTAT) as a pure-Python data library.
 
 [![CI](https://github.com/DLRSP/ateco/actions/workflows/ci.yaml/badge.svg)](https://github.com/DLRSP/ateco/actions/workflows/ci.yaml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Docs](https://img.shields.io/badge/docs-GitHub_Pages-blue)](https://dlrsp.github.io/ateco/)
 
 ## Features
 
